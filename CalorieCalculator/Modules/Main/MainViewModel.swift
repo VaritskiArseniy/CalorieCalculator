@@ -76,6 +76,7 @@ final class MainViewModel: ObservableObject {
         if let editingEntry, !isCreatingNew {
             editingEntry.title = editingTitle
             editingEntry.calories = editingCalories
+            editingEntry.imageData = imageData
             try? context.save()
         } else {
             let entry = service.makeEntry(

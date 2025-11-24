@@ -56,18 +56,17 @@ struct MainView: View {
         }
         .sheet(isPresented: $viewModel.showEditSheet) {
             NoteSheet(
-                title: $viewModel.editingTitle,
-                calories: $viewModel.editingCalories,
-                id: viewModel.editingEntry?.id,
-                entry: viewModel.editingEntry
-            ) {
-                viewModel.saveFromSheet(
-                    context: context,
-                    imageData: selectedImageDataForNewEntry
-                )
-                viewModel.updateEntries(allEntries)
-                clearImageSelection()
-            }
+                 title: $viewModel.editingTitle,
+                 calories: $viewModel.editingCalories,
+                 id: viewModel.editingEntry?.id,
+                 entry: viewModel.editingEntry
+             ) { imageData in
+                 viewModel.saveFromSheet(
+                     context: context,
+                     imageData: imageData
+                 )
+                 viewModel.updateEntries(allEntries)
+             }
             .presentationDetents([.large])
             .presentationDragIndicator(.visible)
         }
